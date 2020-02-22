@@ -1,0 +1,62 @@
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(193, 223, 192, 1) 0%,
+    rgba(207, 229, 208, 1) 51%,
+    rgba(221, 235, 220, 1) 100%
+  );
+}
+.main-container {
+  width: 60%;
+  height: 80vh;
+  box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
+  border-radius: 5px;
+}
+
+.main-container .left {
+  padding: 3em 3em;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  background-color: white;
+  border-radius: 5px;
+}
+.main-container .right {
+  width: 50%;
+  display: inline-block;
+  background-color: #c0e3be;
+  border-radius: 5px;
+}
+
+h1 {
+  color: #638165;
+}
+.home-controls {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+}
+
+.home-controls button {
+  margin-top: 1em;
+  width: 14em;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 6px 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #c0e3be;
+  border: none;
+}
+
+.signup-form .form-input {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+}
