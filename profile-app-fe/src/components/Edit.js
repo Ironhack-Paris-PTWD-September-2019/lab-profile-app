@@ -1,22 +1,44 @@
 import React from "react";
 import AuthServices from "./auth/auth-service";
 
+const Modal = ({ handleClose, show, children }) => {
+  return (
+    <div className={show ? "modal display-block" : "modal display-none"}>
+      <section className="modal-main">
+        <button style={{ marginLeft: "auto" }} onClick={handleClose}>
+          X
+        </button>
+        {children}
+      </section>
+    </div>
+  );
+};
+
 class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: this.props.loggedInUser.username || "",
       campus: this.props.loggedInUser.campus || "",
-      course: this.props.loggedInUser.course || ""
+      course: this.props.loggedInUser.course || "",
+      image: this.props.loggedInUser.image || "/default-avatar.jpg",
+      showModal: false
     };
     this.service = new AuthServices();
   }
 
+  showModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showModal: false });
+  };
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
+  handleUploadImage = image => {};
   submitForm = () => {
     console.log("submitForm");
     const { username, campus, course } = this.state;
@@ -37,6 +59,12 @@ class Edit extends React.Component {
       </div>
     ) : (
       <div className="main-container signup">
+        <Modal show={this.state.showModal} handleClose={this.hideModal}>
+          <div className="avatar">
+            <h2>Change avatar</h2>
+            <img src={this.state.image} />
+          </div>
+        </Modal>
         <div className="left signup-form">
           <h1>Edit Profile</h1>
           <div className="form">
@@ -86,8 +114,16 @@ class Edit extends React.Component {
         </div>
         <div className="right">
           <div className="avatar">
-            <img src={this.props.loggedInUser.image || "/default-avatar.jpg"} />
-
+            <img
+              src={this.state.image}
+              onClick={this.showModal}
+              style={{
+                cursor: "pointer",
+                border: "3px dashed rgb(99, 129, 101)"
+              }}
+            />
+          </div>
+          <div className="create-account">
             <button onClick={this.submitForm}>Submit Changes</button>
           </div>
         </div>

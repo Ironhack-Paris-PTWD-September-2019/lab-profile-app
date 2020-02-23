@@ -45,20 +45,17 @@ class Profile extends React.Component {
                 width: "90%",
                 textAlign: "center"
               }}
+              onClick={this.logOut}
+              style={{
+                color: "red",
+                fontSize: "14px",
+                fontWeight: "600",
+                textDecoration: "none",
+                cursor: "pointer"
+              }}
+              to="/logout"
             >
-              <p
-                onClick={this.logOut}
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  textDecoration: "none",
-                  cursor: "pointer"
-                }}
-                to="/logout"
-              >
-                Logout
-              </p>
+              Logout
             </p>
           </div>
         </div>
