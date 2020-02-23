@@ -1,11 +1,13 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import AuthServices from "./components/auth/auth-service";
 import "./App.css";
 
 import Homepage from "./components/Homepage";
 import Profile from "./components/Profile";
+import Edit from "./components/Edit";
+
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 
@@ -43,7 +45,21 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Homepage} />
+          <Route
+            exact
+            path="/"
+            render={props =>
+              this.state.loggedInUser ? (
+                <Profile
+                  loggedInUser={this.state.loggedInUser}
+                  getUser={this.getUser}
+                  {...props}
+                />
+              ) : (
+                <Homepage />
+              )
+            }
+          />
           <Route
             exact
             path="/login"
@@ -58,7 +74,22 @@ class App extends React.Component {
             exact
             path="/profile"
             render={props => (
-              <Profile loggedInUser={this.state.loggedInUser} {...props} />
+              <Profile
+                loggedInUser={this.state.loggedInUser}
+                getUser={this.getUser}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/edit"
+            render={props => (
+              <Edit
+                loggedInUser={this.state.loggedInUser}
+                getUser={this.getUser}
+                {...props}
+              />
             )}
           />
         </Switch>

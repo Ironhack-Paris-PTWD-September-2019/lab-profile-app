@@ -94,4 +94,6 @@ app.use("/", index);
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+app.use("/api", require("./routes/upload-route"));
+
 module.exports = app;

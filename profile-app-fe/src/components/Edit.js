@@ -1,15 +1,13 @@
 import React from "react";
-import AuthServices from "./auth-service";
-import { Link } from "react-router-dom";
+import AuthServices from "./auth/auth-service";
 
-class Signup extends React.Component {
+class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      campus: "",
-      course: ""
+      username: this.props.loggedInUser.username || "",
+      campus: this.props.loggedInUser.campus || "",
+      course: this.props.loggedInUser.course || ""
     };
     this.service = new AuthServices();
   }
@@ -21,18 +19,11 @@ class Signup extends React.Component {
 
   submitForm = () => {
     console.log("submitForm");
-    const { username, password, campus, course } = this.state;
+    const { username, campus, course } = this.state;
     this.service
-      .signup(username, password, campus, course)
+      .edit(username, campus, course)
       .then(response => {
-        // reset form
-        this.setState({
-          username: "",
-          password: "",
-          campus: "",
-          course: ""
-        });
-
+        console.log(response);
         this.props.getUser(response);
         this.props.history.push("/profile");
       })
@@ -40,10 +31,14 @@ class Signup extends React.Component {
   };
 
   render() {
-    return (
+    return !this.props.loggedInUser ? (
+      <div className="main-container signup">
+        <div className="left signup-form">Loading ...</div>
+      </div>
+    ) : (
       <div className="main-container signup">
         <div className="left signup-form">
-          <h1>Sign Up</h1>
+          <h1>Edit Profile</h1>
           <div className="form">
             <div className="form-input">
               <label>Username</label>
@@ -51,15 +46,6 @@ class Signup extends React.Component {
                 type="text"
                 name="username"
                 value={this.state.username}
-                onChange={e => this.handleChange(e)}
-              />
-            </div>
-            <div className="form-input">
-              <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
                 onChange={e => this.handleChange(e)}
               />
             </div>
@@ -96,24 +82,13 @@ class Signup extends React.Component {
                 <option value="Data Analytics">Data Analytics</option>
               </select>
             </div>
-            <p className="littleText">
-              If you already have an account, you can log in{" "}
-              <Link to="/login">here</Link>
-            </p>
           </div>
         </div>
         <div className="right">
-          <div className="text">
-            <h2>Hello!!</h2>
-            <p>Welcome to IronProfile!</p>
-          </div>
+          <div className="avatar">
+            <img src={this.props.loggedInUser.image || "/default-avatar.jpg"} />
 
-          <div className="create-account">
-            <p>
-              If you signup, you agree with all our terms and conditions where
-              we can do whatever we want with the data!
-            </p>
-            <button onClick={this.submitForm}>Create the Account</button>
+            <button onClick={this.submitForm}>Submit Changes</button>
           </div>
         </div>
       </div>
@@ -121,4 +96,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default Edit;

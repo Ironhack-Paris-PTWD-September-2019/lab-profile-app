@@ -108,7 +108,7 @@ router.put("/edit", (req, res, next) => {
     { new: true }
   )
     .then(updatedUser => {
-      res.status(200).json({ updatedUser, message: "User Updated" });
+      res.status(200).json(updatedUser);
     })
     .catch(err => {
       res.json(err);

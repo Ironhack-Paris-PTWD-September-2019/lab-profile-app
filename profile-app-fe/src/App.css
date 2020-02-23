@@ -12,26 +12,38 @@
 }
 .main-container {
   width: 60%;
-  height: 80vh;
+  height: 70vh;
+  min-height: 430px;
   box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
   border-radius: 5px;
+  display: flex;
 }
 
 .main-container .left {
-  padding: 3em 3em;
+  padding: 3em 3em 2em 2em;
   width: 50%;
   height: 100%;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: white;
   border-radius: 5px;
 }
 .main-container .right {
   width: 50%;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2em;
+  height: 100%;
   background-color: #c0e3be;
   border-radius: 5px;
 }
-
+.text p {
+  font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.4rem;
+}
 h1 {
   color: #638165;
 }
@@ -39,6 +51,7 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-left: 2em;
+  padding-bottom: 2rem;
 }
 
 .home-controls button {
@@ -52,11 +65,99 @@ h1 {
   background-color: #c0e3be;
   border: none;
 }
+.left.signup-form {
+  justify-content: space-evenly;
+  padding-top: 1.5em;
+}
 
+.left.signup-form h1 {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
 .signup-form .form-input {
   margin-top: 1em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 80%;
+}
+.signup-form .form-input label {
+  margin-bottom: 0.4rem;
+}
+.signup-form .form-input input {
+  height: 30px;
+  font-size: 0.8em;
+  padding-left: 0.5rem;
+  border-radius: 3px;
+  border: none;
+  background-color: #f6f6f6;
+}
+
+select {
+  height: 30px;
+  padding-left: 0.5rem;
+  font-size: 0.8em;
+  border-radius: 3px;
+  border: none;
+  background-color: #f6f6f6;
+}
+
+select::-ms-expand {
+  display: none;
+}
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.left .littleText {
+  font-size: 13px;
+  font-weight: 200;
+  margin-top: 2em;
+  width: 80%;
+}
+.right .create-account {
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.right .create-account p {
+  text-align: justify;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+.right button {
+  width: 170px;
+  padding: 8px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+h4 {
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-weight: 200;
+}
+h3 {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-bottom: 1em;
 }

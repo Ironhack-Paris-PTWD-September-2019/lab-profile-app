@@ -6,7 +6,7 @@ class Homepage extends React.Component {
     return (
       <div className="main-container">
         <div className="left">
-          <div>
+          <div className="text">
             <h1>IronProfile</h1>
             <p>
               Today we will create an app with authorization, adding some cool

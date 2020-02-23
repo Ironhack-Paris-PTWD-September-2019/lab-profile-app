@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import AuthServices from "./auth-service";
 
 class Login extends React.Component {
@@ -36,9 +37,9 @@ class Login extends React.Component {
   render() {
     return (
       <div className="main-container signup">
-        <div className="left">
+        <div className="left signup-form">
           <h1>Log In</h1>
-          <div className="signup-form">
+          <div className="form">
             <div className="form-input">
               <label>Username</label>
               <input
@@ -57,12 +58,18 @@ class Login extends React.Component {
                 onChange={e => this.handleChange(e)}
               />
             </div>
+            <p className="littleText">
+              If you don't have an account yet, you can create your account{" "}
+              <Link to="/signup">here</Link>
+            </p>
           </div>
         </div>
         <div className="right">
-          <h2>Hello!!</h2>
-          <p>Awesome to have an IronProfile!</p>
-          <div className="login">
+          <div className="text">
+            <h2>Hello!!</h2>
+            <p>Awesome to have an IronProfile!</p>
+          </div>
+          <div className="create-account">
             <p>
               If you login, you agree with all our terms and conditions where we
               can do whatever we want with the data!
