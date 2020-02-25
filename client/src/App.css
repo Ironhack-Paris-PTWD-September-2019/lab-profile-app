@@ -1,0 +1,17 @@
+body{
+  margin:20px;
+}
+.button{
+  margin:20px;
+}
+.button button{
+  font-size:30px;
+}
+
+.field{
+  margin:20px
+}
+
+.field-name{
+  color:grey
+}
