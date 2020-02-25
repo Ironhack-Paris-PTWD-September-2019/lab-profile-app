@@ -4,7 +4,7 @@ import axios from 'axios';
 class AuthService{
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:5000/api',
+      baseURL: 'http://localhost:5000/auth',
       withCredentials: true
     });
   }
@@ -20,6 +20,15 @@ class AuthService{
 
   logout = () => {
     return this.service.post('/logout', {})
+    .then(response => response.data)
+  }
+
+  edit=(username,campus,course)=>{
+    return this.service.post('/edit',{
+      username: username,
+      campus:campus,
+      course:course
+    })
     .then(response => response.data)
   }
 

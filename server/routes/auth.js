@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
-/*router.get("/login", (req, res, next) => {
+router.get("/login", (req, res, next) => {
   res.render("auth/login", { "message": req.flash("error") });
 });
 
@@ -17,7 +17,7 @@ router.post("/login", passport.authenticate("local", {
   failureRedirect: "/auth/login",
   failureFlash: true,
   passReqToCallback: true
-}));*/
+}));
 
 
 router.post('/login', (req, res, next) => {
@@ -111,5 +111,10 @@ router.get('/loggedin', (req, res, next) => {
   }
   res.status(403).json({ message: 'Unauthorized' });
 });
+//----EDIT----
+router.post('/edit', (req,res,next)=>{
+  // verif que le user est loggue
+  // req.user 
+})
 
 module.exports = router;

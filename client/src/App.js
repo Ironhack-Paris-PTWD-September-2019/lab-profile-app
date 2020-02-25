@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import HomePage from "./components/HomePage.js"
-import Signup from './components/auth/Signup';
-import Login from './components/auth/Login'; 
+import Signup from "./components/auth/Signup.js";
+import Login from "./components/auth/Login.js"; 
 import { Switch, Route } from 'react-router-dom';
 
 
