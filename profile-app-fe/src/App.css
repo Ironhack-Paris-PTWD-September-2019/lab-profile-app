@@ -27,7 +27,8 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
-  border-radius: 5px;
+
+  border-radius: 5px 0 0 5px;
 }
 .main-container .right {
   width: 50%;

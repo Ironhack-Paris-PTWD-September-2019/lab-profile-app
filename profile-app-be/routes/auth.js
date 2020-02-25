@@ -19,6 +19,7 @@ router.post("/login", (req, res, next) => {
     if (!theUser) {
       // "failureDetails" contains the error messages
       // from our logic in "LocalStrategy" { message: '...' }.
+      console.log("I went through here");
       res.status(401).json(failureDetails);
       return;
     }

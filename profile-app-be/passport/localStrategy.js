@@ -18,7 +18,7 @@ passport.use(
           }
 
           if (!bcrypt.compareSync(password, foundUser.password)) {
-            done(null, false, { message: "Incorrect password or password" });
+            done(null, false, { message: "Incorrect Login or Password" });
             return;
           }
 

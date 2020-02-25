@@ -41,8 +41,8 @@ class AuthServices {
       .then(response => response.data);
   };
 
-  //returns the secure_ULR in cloudinary
-  handleUpload = theFile => {
+  //saves the secure URL in user and returns updated user
+  handleUploadFile = theFile => {
     // console.log('file in service: ', theFile)
     return this.service
       .post("/upload", theFile)

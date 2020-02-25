@@ -18,11 +18,15 @@ class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: this.props.loggedInUser.username || "",
-      campus: this.props.loggedInUser.campus || "",
-      course: this.props.loggedInUser.course || "",
-      image: this.props.loggedInUser.image || "/default-avatar.jpg",
-      showModal: false
+      username:
+        (this.props.loggedInUser && this.props.loggedInUser.username) || "",
+      campus: (this.props.loggedInUser && this.props.loggedInUser.campus) || "",
+      course: (this.props.loggedInUser && this.props.loggedInUser.course) || "",
+      image:
+        (this.props.loggedInUser && this.props.loggedInUser.image) ||
+        "/default-avatar.jpg",
+      showModal: false,
+      file: ""
     };
     this.service = new AuthServices();
   }
@@ -38,7 +42,30 @@ class Edit extends React.Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-  handleUploadImage = image => {};
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    this.setState({ file: e.target.files[0] });
+  };
+
+  FileUpload = () => {
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("image", this.state.file);
+    this.service
+      .handleUploadFile(uploadData)
+      .then(response => {
+        // console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.props.getUser(response);
+        this.props.history.push("/profile");
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
   submitForm = () => {
     console.log("submitForm");
     const { username, campus, course } = this.state;
@@ -52,6 +79,19 @@ class Edit extends React.Component {
       .catch(error => console.log(error));
   };
 
+  componentDidUpdate = () => {
+    if (!this.state.username && this.props.loggedInUser) {
+      this.setState({
+        username: this.props.loggedInUser.username,
+        campus: this.props.loggedInUser.campus,
+        course: this.props.loggedInUser.course,
+        image: this.props.loggedInUser.image || "/default-avatar.jpg"
+      });
+    }
+
+    console.log(this.props);
+  };
+
   render() {
     return !this.props.loggedInUser ? (
       <div className="main-container signup">
@@ -63,6 +103,8 @@ class Edit extends React.Component {
           <div className="avatar">
             <h2>Change avatar</h2>
             <img src={this.state.image} />
+            <input type="file" onChange={e => this.handleFileUpload(e)} />
+            <button onClick={() => this.FileUpload()}>Upload</button>
           </div>
         </Modal>
         <div className="left signup-form">
@@ -122,6 +164,14 @@ class Edit extends React.Component {
                 border: "3px dashed rgb(99, 129, 101)"
               }}
             />
+            <p
+              style={{
+                cursor: "pointer"
+              }}
+              onClick={this.showModal}
+            >
+              Change Picture
+            </p>
           </div>
           <div className="create-account">
             <button onClick={this.submitForm}>Submit Changes</button>

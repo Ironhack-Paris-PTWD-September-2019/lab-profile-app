@@ -7,7 +7,8 @@ class Login extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      error: ""
     };
     this.service = new AuthServices();
   }
@@ -31,7 +32,10 @@ class Login extends React.Component {
         this.props.getUser(response);
         this.props.history.push("/profile");
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        this.setState({ error: error.response.data.message });
+        console.log(error.response.data.message);
+      });
   };
 
   render() {
@@ -58,6 +62,7 @@ class Login extends React.Component {
                 onChange={e => this.handleChange(e)}
               />
             </div>
+            <p style={{ color: "red" }}>{this.state.error}</p>
             <p className="littleText">
               If you don't have an account yet, you can create your account{" "}
               <Link to="/signup">here</Link>
