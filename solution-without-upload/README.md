@@ -2,13 +2,13 @@
 
 # Iteration #0
 
-In a terminal #1 :
+In a terminal #1 (port 5000):
 ```
 npm install
 npm run dev
 ```
 
-In a terminal #2:
+In a terminal #2 (port 3000):
 ```
 cd client
 npm install
@@ -23,10 +23,10 @@ Express-side, implement the backend route: `POST /auth/upload`:
 |---------|-------------------|-------------------------------|--------------|
 | POST    | `/auth/upload`    | a file with fieldname `photo` | User updated |
 
-- [] you should prevent not-logged users from uploading a new avatar
-- [] your server should store the file to Cloudinary
-- [] once stored, update the user's `image` property to the Cloudinary URL (into DB)
-- [] your server should send a `200` with the new user infos as response
+- [ ] you should prevent not-logged users from uploading a new avatar
+- [ ] your server should store the file to Cloudinary
+- [ ] once stored, update the user's `image` property to the Cloudinary URL (into DB)
+- [ ] your server should send a `200` with the new user infos as response
 
 # Iteration #2: 
 
