@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url("/images/oval-bg.png") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  text-align: left;
+  padding-left:3em;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* :before, after {
+  box-sizing:border-box;
+  
+  }
+  
+  
+  img {max-width:100%;}
+  /* ne fait pas exploqer la page en largeur qd l'image est très grande*/
+  
+  .HomePage a {
+  text-decoration:inherit; color:inherit;
+  display:block;
+  background:#C0E3BE;
+  padding:1em; border-radius:.5em;
+  width:25vw;
+  margin-left:10vw;
+  margin-bottom : 5vh;
+  text-align:center;
+  font-weight:bold;
+  }
+
+.HomePage {
+  
+
+}
+
+h1 {
+  color:#658367;
+  font-size:4em;
+}
+
+h2 {
+  margin-top:2em;
+  font-size:3em;
+}
+
+.HomePage p {
+  display : inline-block;
+  font-size:3em;
+  width:40vw;
+
+}
+
+.partieHaute {
+  display:flex;
+  justify-content: space-between;
+
+}
+
+.partieHauteDroite {
+  margin-right:10vw;
+}
+
+.partieHauteDroite h3{
+  font-weight: lighter;
+  text-align: left;
+  display:block;
+  width:30vW;
+  font-size: 2em;
+}
+
+
+
+form {
+  display:flex;
+  justify-content: space-between;
+ 
+}
+
+form input,select {
+  width: 30vw;
+  display:block;
+  margin-bottom:2em;
+  line-height:2em;
+  background-color:#F6F6F6;
+}
+
+label {
+  margin-right: auto;
+  
+}
+
+.formGauche {
+  display:flex;
+  flex-direction: column;
+}
+
+.formDroite {
+  margin-bottom : 4em;
+  margin-top : 40vh;
+  width:30vw;
+  margin-right:10vW;
+
+}
